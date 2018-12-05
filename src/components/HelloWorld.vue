@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    {{msg}}
+    <input type="text" v-model="input">
+    <button @click="split(input)">convert</button>
+    {{input}}
+    {{result}}
   </div>
 </template>
 
@@ -9,8 +12,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      // msg: this.test
-      msg: this.split(1984)
+      input: 0,
+      result: null
     }
   },
   methods: {
@@ -50,6 +53,7 @@ export default {
       *(arr.length - 1) - i
       */
       console.log(arrFin)
+      this.result = arrFin
       return 'number: ' + num + ' splitted: ' + arrFin
     }
   },
