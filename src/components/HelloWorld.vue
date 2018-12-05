@@ -42,19 +42,19 @@ export default {
       for(let i = 0; i < arr.length; i++) {
         positions.push((arr.length - 1) - i)
         let zeroLength = (arr.length - 1) - i
-        let zero = ''
+        /*let zero = ''
         for(let e = 0; e <= zeroLength - 1; e++){
           zero += '0'
         }
-        arrFin.push(arr[i] + zero )
+        arrFin.push(arr[i] + zero )*/
+        arrFin.push(arr[i])
       }
       /**
       * jede Ziffer bekommt ihrer Position entsprechend viele Nullen:
       *(arr.length - 1) - i
       */
-      console.log(arrFin)
       this.result = arrFin
-      return 'number: ' + num + ' splitted: ' + arrFin
+      // return 'number: ' + num + ' splitted: ' + arrFin
     }
   },
   computed: {
