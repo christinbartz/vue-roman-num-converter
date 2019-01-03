@@ -13,19 +13,11 @@ export default {
   data () {
     return {
       input: 0,
-      result: null
+      result: [],
+      resource: [['I', 'V', 'X'],['X', 'L', 'C'],['C', 'D', 'M'], ['M']]
     }
   },
   methods: {
-    /**
-    * step 1: split the numbers
-    * step 2: convert seperate numbers to roman numeral
-    * step 2.1: develop logic for numbers 1 to 10
-    **** 1: I 2: II 3: III 4: IV 5: V 6: VI 7: VII 8: VIII 9: IX 10: X
-    **** 1:I 5:V 10:X 50:L 100:C 500:D 1000:M
-    * step 2.2: convert logic to numbers 11 to 9999
-    * step 3: add the numeral stings together
-    */
 
     //*************************************************************
     //*********************Splitting the number********************
@@ -36,25 +28,48 @@ export default {
       let arr = []
       let positions = []
       let arrFin = []
+      let arrReversed = []
       for (let i of numStr) {
         arr.push(i)
       }
-      for(let i = 0; i < arr.length; i++) {
-        positions.push((arr.length - 1) - i)
-        let zeroLength = (arr.length - 1) - i
-        /*let zero = ''
-        for(let e = 0; e <= zeroLength - 1; e++){
-          zero += '0'
-        }
-        arrFin.push(arr[i] + zero )*/
-        arrFin.push(arr[i])
+      arrReversed = arr.reverse()
+
+    for (num in arrReversed) {
+      let converted = ''
+      switch(arrReversed[num]) {
+        case "0":
+          converted = ''
+          break
+        case "1":
+          converted = "i"
+          break
+        case "2":
+          converted = "ii"
+          break
+        case "3":
+          converted = "iii"
+          break
+        case "4":
+          converted = "iv"
+          break
+        case "5":
+          converted = "v"
+          break
+        case "6":
+          converted = "vi"
+          break
+        case "7":
+          converted = "vii"
+          break
+        case "8":
+          converted = "viii"
+          break
+        case "9":
+          converted = "ix"
       }
-      /**
-      * jede Ziffer bekommt ihrer Position entsprechend viele Nullen:
-      *(arr.length - 1) - i
-      */
-      this.result = arrFin
-      // return 'number: ' + num + ' splitted: ' + arrFin
+      this.result.push(converted)
+    }
+
     }
   },
   computed: {
