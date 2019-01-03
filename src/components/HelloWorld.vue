@@ -25,50 +25,51 @@ export default {
 
     split: function(num) {
       let numStr = num.toString()
-      let arr = []
-      let positions = []
-      let arrFin = []
-      let arrReversed = []
-      for (let i of numStr) {
-        arr.push(i)
-      }
+      let arr
+      let arrReversed
+
+      // convert number string to an array
+      arr = numStr.split('')
+
+      // reverse number array
       arrReversed = arr.reverse()
 
-    for (num in arrReversed) {
-      let converted = ''
-      switch(arrReversed[num]) {
-        case "0":
-          converted = ''
-          break
-        case "1":
-          converted = "i"
-          break
-        case "2":
-          converted = "ii"
-          break
-        case "3":
-          converted = "iii"
-          break
-        case "4":
-          converted = "iv"
-          break
-        case "5":
-          converted = "v"
-          break
-        case "6":
-          converted = "vi"
-          break
-        case "7":
-          converted = "vii"
-          break
-        case "8":
-          converted = "viii"
-          break
-        case "9":
-          converted = "ix"
+      // convert numbers to roman counterpart
+      for (num of arrReversed) {
+        let converted = ''
+        switch(num) {
+          case "0":
+            converted = ''
+            break
+          case "1":
+            converted = "i"
+            break
+          case "2":
+            converted = "ii"
+            break
+          case "3":
+            converted = "iii"
+            break
+          case "4":
+            converted = "iv"
+            break
+          case "5":
+            converted = "v"
+            break
+          case "6":
+            converted = "vi"
+            break
+          case "7":
+            converted = "vii"
+            break
+          case "8":
+            converted = "viii"
+            break
+          case "9":
+            converted = "ix"
+        }
+        this.result.push(converted)
       }
-      this.result.push(converted)
-    }
 
     }
   },
