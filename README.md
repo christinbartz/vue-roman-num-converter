@@ -1,7 +1,11 @@
 # Roman Numeral Converter
 
-> This is a simple tool that converts decimal numbers up to 3999 into roman numerals.
+This is a simple tool that converts decimal numbers up to 3999 into roman numerals.
 
+> TODO
+> - add form validation (only numbers up to 3999)
+> - add styling
+> - create demo
 
 ## Build Setup
 
