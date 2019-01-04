@@ -78,9 +78,9 @@ export default {
         let converted
         converted = singles[i].replace(/i/g, this.resource[i][0]).replace(/v/g, this.resource[i][1]).replace(/x/g, this.resource[i][2])
         convertedReversed.push(converted)
-        console.log(convertedReversed)
       }
-    this.result = singles
+    converted = convertedReversed.reverse()
+    this.result = converted.join('')
     }
   },
   computed: {
