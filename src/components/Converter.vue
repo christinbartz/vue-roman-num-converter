@@ -13,7 +13,7 @@ export default {
   data () {
     return {
       input: 0,
-      result: [],
+      result: null,
       resource: [['I', 'V', 'X'],['X', 'L', 'C'],['C', 'D', 'M'], ['M']]
     }
   },

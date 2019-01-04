@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png"> -->
-    <router-view/>
+    <Converter></Converter>
   </div>
 </template>
 
 <script>
+import Converter from '@/components/Converter'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Converter
+  }
 }
 </script>
 
