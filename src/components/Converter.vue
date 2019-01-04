@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
     <input type="text" v-model="input">
-    <button @click="split(input)">convert</button>
-    {{input}}
+    <button @click="converter(input)">convert</button>
     {{result}}
   </div>
 </template>
@@ -19,11 +18,7 @@ export default {
   },
   methods: {
 
-    //*************************************************************
-    //*********************Splitting the number********************
-    //*************************************************************
-
-    split: function(num) {
+    converter: function(num) {
       let numStr = num.toString()
       let arr
       let arrReversed
