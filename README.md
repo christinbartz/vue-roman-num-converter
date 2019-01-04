@@ -1,6 +1,7 @@
-# fcc
+# Roman Numeral Converter
 
-> Algorithm challenges
+> This is a simple tool that converts latin numbers up to 3999 into roman numerals.
+
 
 ## Build Setup
 
