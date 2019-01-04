@@ -27,6 +27,9 @@ export default {
       let numStr = num.toString()
       let arr
       let arrReversed
+      let singles = []
+      let convertedReversed = []
+      let converted
 
       // convert number string to an array
       arr = numStr.split('')
@@ -35,8 +38,8 @@ export default {
       arrReversed = arr.reverse()
 
       // convert numbers to roman counterpart
-      for (num of arrReversed) {
-        let converted = ''
+      for (let num of arrReversed) {
+        let converted
         switch(num) {
           case "0":
             converted = ''
@@ -68,9 +71,16 @@ export default {
           case "9":
             converted = "ix"
         }
-        this.result.push(converted)
+        singles.push(converted)
       }
-
+      // convert the single numbers to their counterparts according to their decimal place
+      for (let i = 0; i < singles.length; i++) {
+        let converted
+        converted = singles[i].replace(/i/g, this.resource[i][0]).replace(/v/g, this.resource[i][1]).replace(/x/g, this.resource[i][2])
+        convertedReversed.push(converted)
+        console.log(convertedReversed)
+      }
+    this.result = singles
     }
   },
   computed: {
