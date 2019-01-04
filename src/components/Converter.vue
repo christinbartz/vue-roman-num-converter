@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Converter',
   data () {
     return {
       input: 0,
