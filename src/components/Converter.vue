@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <input type="text" v-model="input">
+    <input @keyup.enter="converter(input)" type="text" v-model="input">
     <button @click="converter(input)">convert</button>
     {{result}}
   </div>
