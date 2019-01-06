@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <input @keyup.enter="converter(input)" type="text" v-model="input">
+    {{checked}}
+    <input type="text" v-model="input">
     <button @click="converter(input)">convert</button>
     {{result}}
   </div>
@@ -11,74 +12,85 @@ export default {
   name: 'Converter',
   data () {
     return {
-      input: 0,
+      input: '',
       result: null,
       resource: [['I', 'V', 'X'],['X', 'L', 'C'],['C', 'D', 'M'], ['M']]
     }
   },
   methods: {
-
+    error: function() {
+      console.log('error')
+    },
     converter: function(num) {
-      let numStr = num.toString()
-      let arr
-      let arrReversed
-      let singles = []
-      let convertedReversed = []
-      let converted
-
-      // convert number string to an array
-      arr = numStr.split('')
-
-      // reverse number array
-      arrReversed = arr.reverse()
-
-      // convert numbers to roman counterpart
-      for (let num of arrReversed) {
+      if(this.checked) {
+        let numStr = num.toString()
+        let arr
+        let arrReversed
+        let singles = []
+        let convertedReversed = []
         let converted
-        switch(num) {
-          case "0":
-            converted = ''
-            break
-          case "1":
-            converted = "i"
-            break
-          case "2":
-            converted = "ii"
-            break
-          case "3":
-            converted = "iii"
-            break
-          case "4":
-            converted = "iv"
-            break
-          case "5":
-            converted = "v"
-            break
-          case "6":
-            converted = "vi"
-            break
-          case "7":
-            converted = "vii"
-            break
-          case "8":
-            converted = "viii"
-            break
-          case "9":
-            converted = "ix"
+
+        // convert number string to an array
+        arr = numStr.split('')
+
+        // reverse number array
+        arrReversed = arr.reverse()
+
+        // convert numbers to roman counterpart
+        for (let num of arrReversed) {
+          let converted
+          switch(num) {
+            case "0":
+              converted = ''
+              break
+            case "1":
+              converted = "i"
+              break
+            case "2":
+              converted = "ii"
+              break
+            case "3":
+              converted = "iii"
+              break
+            case "4":
+              converted = "iv"
+              break
+            case "5":
+              converted = "v"
+              break
+            case "6":
+              converted = "vi"
+              break
+            case "7":
+              converted = "vii"
+              break
+            case "8":
+              converted = "viii"
+              break
+            case "9":
+              converted = "ix"
+          }
+          singles.push(converted)
         }
-        singles.push(converted)
+        // convert the single numbers to their counterparts according to their decimal place
+        for (let i = 0; i < singles.length; i++) {
+          let converted
+          converted = singles[i].replace(/i/g, this.resource[i][0]).replace(/v/g, this.resource[i][1]).replace(/x/g, this.resource[i][2])
+          convertedReversed.push(converted)
+        }
+      converted = convertedReversed.reverse()
+      this.result = converted.join('')
       }
-      // convert the single numbers to their counterparts according to their decimal place
-      for (let i = 0; i < singles.length; i++) {
-        let converted
-        converted = singles[i].replace(/i/g, this.resource[i][0]).replace(/v/g, this.resource[i][1]).replace(/x/g, this.resource[i][2])
-        convertedReversed.push(converted)
-      }
-    converted = convertedReversed.reverse()
-    this.result = converted.join('')
     }
   },
   computed: {
+    checked: function() {
+      if(this.input.length > 4) {
+        return false
+      } else {
+        return true
+      }
+    }
   }
 }
 </script>
