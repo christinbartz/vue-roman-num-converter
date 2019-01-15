@@ -85,6 +85,8 @@ export default {
   },
   computed: {
     checked: function() {
+      // const check = /^\d+$/
+      console.log(/^\d+$/.test(this.input))
       if(this.input.length > 4) {
         return false
       } else {
