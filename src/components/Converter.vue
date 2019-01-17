@@ -1,9 +1,10 @@
 <template>
-  <div class="hello">
+  <div>
     {{checked}}
     <input type="text" v-model="input">
-    <button @click="converter(input)">convert</button>
+    <button @click="converter(input)" :disabled="!checked">convert</button>
     {{result}}
+    {{errorMsg}}
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
     return {
       input: '',
       result: null,
-      resource: [['I', 'V', 'X'],['X', 'L', 'C'],['C', 'D', 'M'], ['M']]
+      resource: [['I', 'V', 'X'],['X', 'L', 'C'],['C', 'D', 'M'], ['M']],
+      errorMsg: null
     }
   },
   methods: {
@@ -85,11 +87,14 @@ export default {
   },
   computed: {
     checked: function() {
-      // const check = /^\d+$/
-      console.log(/^\d+$/.test(this.input))
-      if(this.input.length > 4) {
+      if(this.input > 3999) {
+        this.errorMsg = "Please enter a number smaller or equal to 3999"
+        return false
+      } else if (this.input !== '' && /^\d+$/.test(this.input) !== true) {
+        this.errorMsg = "Please enter a number"
         return false
       } else {
+        this.errorMsg = null
         return true
       }
     }
